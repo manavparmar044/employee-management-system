@@ -1,14 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Login from "./pages/Login";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="text-3xl">Employee Management System</div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element = {<Navigate to = "admin-dashboard"/>}/>
+        <Route path="/login" element = {<Login />}/>
+        <Route path="admin-dashboard" element = {<AdminDashboard />}/>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
