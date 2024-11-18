@@ -10,7 +10,7 @@ const userRegister = async() => {
             console.log("Admin user already exists");
             return; // Exit if the user already exists
         } 
-        const hashPassword = await bcrypt.hash("admin",19)
+        const hashPassword = await bcrypt.hash("admin",8)
         const newUser = new User({
             name: "Admin",
             email: "admin@gmail.com",

@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import axios from "axios"
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Here you could add login logic, such as sending email and password to the backend
-    console.log("Logging in with", { email, password });
+    try{
+      const res = await axios.post("http://localhost:5001/api/auth/login", { email, password });
+      if(res.data.success){
+        alert("Logged In successfully")
+      }
+    }
+    catch(err){
+      console.log(err);
+    }
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Mcross Staff Management</h2>
-        <form className="space-y-5" onSubmit={handleLogin}>
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input 
