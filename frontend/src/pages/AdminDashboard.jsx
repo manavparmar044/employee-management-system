@@ -1,18 +1,9 @@
-import React, { useEffect } from 'react'
-import { useAuth } from '../context/authContext'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { useAuth } from "../context/authContext";
 
 function AdminDashboard() {
-  const {user} = useAuth()
-  const navigate = useNavigate()
-  useEffect(() => {
-    if (!user) {
-      navigate('/login');
-    }
-  }, [user, navigate]);
-  return (
-    <div>{user && user.name}</div>
-  )
+  const { user } = useAuth();
+  return <div>Welcome, Admin {user?.name}!</div>;
 }
 
-export default AdminDashboard
+export default AdminDashboard;

@@ -1,48 +1,49 @@
-import axios from 'axios'
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
-const userContext = createContext()
+const AuthContext = createContext();
 
-const authContext = ({children}) => {
-    useEffect(()=>{
-        const verifyUser = async () => {
-            try{
-                const token = localStorage.getItem("token")
-                if(token){
-                    const res = await axios.get("http://localhost:5001/api/auth/verify",{
-                        headers: {
-                            "Authorization" : `Bearer ${token}`
-                        }
-                    })
-                    if(res.data.success){
-                        setUser(res.data.user)
-                    }
-                }
-                else{
-                    setUser(null)
-                }
-            }
-            catch(err){
-                if(err.response && !err.response.success){
-                    setUser(null)
-                }
-            }
-            verifyUser()
+export const useAuth = () => useContext(AuthContext);
+
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch user on app start
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const res = await axios.get("http://localhost:5001/api/auth/verify", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          setUser(res.data.user);
+        } catch (err) {
+          console.error("Token verification failed:", err);
+          localStorage.removeItem("token");
         }
-    },[])
-    const [user,setUser] = useState(null)
-    const login = (user) => {
-        setUser(user)
-    }
-    const logout = () => {
-        setUser(null)
-        localStorage.removeItem("token")
-    }
+      }
+      setLoading(false);
+    };
+    fetchUser();
+  }, []);
+
+  const login = (userData, token) => {
+    setUser(userData);
+    localStorage.setItem("token", token);
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("token");
+  };
+
   return (
-    <userContext.Provider value={{user,login,logout}}>{children}</userContext.Provider>
-  )
-}
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-export const useAuth = () => useContext(userContext)
-
-export default authContext
+export default AuthProvider;

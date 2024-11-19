@@ -10,6 +10,8 @@ function Login() {
   const {login} = useAuth()
   const navigate = useNavigate()
 
+  axios.defaults.withCredentials = true;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Here you could add login logic, such as sending email and password to the backend
@@ -18,7 +20,9 @@ function Login() {
       console.log(res);
       if(res.data.success){
         setError('')
+        console.log(res.data.user);
         login(res.data.user)
+        console.log(res.data.token);
         localStorage.setItem("token",res.data.token)
         if(res.data.user.role === "admin"){
           navigate("/admin-dashboard")

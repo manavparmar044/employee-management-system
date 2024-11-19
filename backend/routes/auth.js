@@ -7,6 +7,6 @@ const authRouter = express.Router();
 
 // POST route for login
 authRouter.post("/login", login);
-authRouter.post("/verify", verifyUser,verify);
+authRouter.get("/verify", verifyUser,verify);
 
 export default authRouter;

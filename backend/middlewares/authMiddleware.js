@@ -1,13 +1,17 @@
 import User from "../models/userModel.js";
+import jwt from "jsonwebtoken"
 
 const verifyUser = async (req,res,next) => {
     try{
-        const token = req.headers.authorization.split('')[1];
+        console.log("Splitted");
+        const token = req.headers.authorization.split(' ')[1];
+        console.log(token);
         if(!token){
             return res.status(404).json({success: false,
             error: "Token not provided"})
         }
         const decoded = jwt.verify(token,process.env.TOKEN_SECRET)
+        console.log("Decoded: ", decoded);
         if(!decoded){
             return res.status(404).json({success: false,
                 error: "Token not valid"})

@@ -10,7 +10,12 @@ connectToDB();  // Connect to database
 const app = express();
 
 // Enable CORS for frontend
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', // Frontend URL
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+    credentials: true
+}));
 
 app.use(express.json());  // Middleware to parse JSON request body
 
