@@ -5,6 +5,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import RoleBasedRoutes from "./utils/RoleBasedRoutes";
+import AdminDetails from "./components/dashboard/AdminDetails";
+import Department from "./components/department/Department";
 
 function App() {
   return (
@@ -23,7 +25,10 @@ function App() {
               </RoleBasedRoutes>
             </PrivateRoutes>
           }
-        />
+        >
+          <Route index element = {<AdminDetails />}/>
+          <Route path = "/admin-dashboard/department" element = {<Department />}/>
+          </Route>
         <Route
           path="/employee-dashboard"
           element={
