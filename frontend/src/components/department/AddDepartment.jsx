@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const AddDepartment = ({ onClose }) => {
-  const [name, setName] = useState('');
+  const [departmentName, setDepartmentName] = useState('');
   const [description, setDescription] = useState('');
 
   const handleSave = async () => {
-    if (!name || !description) {
+    if (!departmentName || !description) {
       alert('Please fill out all fields.');
       return;
     }
@@ -18,13 +18,13 @@ const AddDepartment = ({ onClose }) => {
         return;
       }
 
-      const department = { name, description };
+      const department = { departmentName, description };
       const res = await axios.post(
         "http://localhost:5001/api/department/add",
         department,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            "Authorization": `Bearer ${token}`,
           },
         }
       );
@@ -59,8 +59,8 @@ const AddDepartment = ({ onClose }) => {
             <label className="block text-sm font-medium mb-2">Department Name</label>
             <input
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={departmentName}
+              onChange={(e) => setDepartmentName(e.target.value)}
               placeholder="Enter department name"
               className="w-full border rounded p-2"
             />
