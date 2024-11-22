@@ -81,6 +81,7 @@ const DepartmentList = ({ departments }) => {
         isOpen={editPopupOpen}
         onClose={() => setEditPopupOpen(false)}
         departmentName={currentDepartment ? currentDepartment.departmentName : ""}
+        description={currentDepartment ? currentDepartment.description : ""}
         onSave={handleSaveEdit}
       />
 
@@ -89,6 +90,7 @@ const DepartmentList = ({ departments }) => {
         isOpen={deletePopupOpen}
         onClose={() => setDeletePopupOpen(false)}
         onDelete={handleConfirmDelete}
+        departmentName={currentDepartment ? currentDepartment.departmentName : ""}
       />
     </div>
   );
