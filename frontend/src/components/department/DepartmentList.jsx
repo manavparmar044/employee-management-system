@@ -97,3 +97,14 @@ const DepartmentList = ({ departments }) => {
 };
 
 export default DepartmentList;
+
+//Manufacturing
+//Packaging
+//HR
+//Delivery
+//Accounts
+//Design
+//Purchasing
+
+//#ff2a00 Orange
+//#777360 Gray

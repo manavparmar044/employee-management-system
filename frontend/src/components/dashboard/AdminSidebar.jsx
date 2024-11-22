@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 const AdminSidebar = () => {
   return (
-    <div className="bg-slate-500 text-white h-screen fixed left-0 top-0 bottom-0 space-y-2 w-64 px-4 pt-4">
+    <div className="bg-primOr text-white h-screen fixed left-0 top-0 bottom-0 space-y-2 w-64 px-4 pt-4">
       <div className="h-12 flex items-center justify-center">
-        <h2 className="text-2xl">MCROSS</h2>
+        <h2 className="text-2xl">AMCROS</h2>
       </div>
       <div className="pt-4 flex flex-col gap-2">
         {/* Dashboard */}
@@ -15,7 +15,7 @@ const AdminSidebar = () => {
           end
           className={({ isActive }) =>
             `flex items-center space-x-4 py-2.5 px-4 rounded-md ${
-              isActive ? "bg-slate-700" : "hover:bg-slate-600"
+              isActive ? "bg-secOr" : "hover:bg-hoverOr"
             }`
           }
         >
@@ -25,10 +25,10 @@ const AdminSidebar = () => {
 
         {/* Staff */}
         <NavLink
-          to="/admin-staff"
+          to="/admin-dashboard/staff"
           className={({ isActive }) =>
             `flex items-center space-x-4 py-2.5 px-4 rounded-md ${
-              isActive ? "bg-slate-700" : "hover:bg-slate-600"
+              isActive ? "bg-secOr" : "hover:bg-hoverOr"
             }`
           }
         >
@@ -41,7 +41,7 @@ const AdminSidebar = () => {
           to="/admin-dashboard/department"
           className={({ isActive }) =>
             `flex items-center space-x-4 py-2.5 px-4 rounded-md ${
-              isActive ? "bg-slate-700" : "hover:bg-slate-600"
+              isActive ? "bg-secOr" : "hover:bg-hoverOr"
             }`
           }
         >
@@ -54,7 +54,7 @@ const AdminSidebar = () => {
           to="/admin-calendar"
           className={({ isActive }) =>
             `flex items-center space-x-4 py-2.5 px-4 rounded-md ${
-              isActive ? "bg-slate-700" : "hover:bg-slate-600"
+              isActive ? "bg-secOr" : "hover:bg-hoverOr"
             }`
           }
         >
@@ -67,7 +67,7 @@ const AdminSidebar = () => {
           to="/admin-settings"
           className={({ isActive }) =>
             `flex items-center space-x-4 py-2.5 px-4 rounded-md ${
-              isActive ? "bg-slate-700" : "hover:bg-slate-600"
+              isActive ? "bg-secOr" : "hover:bg-hoverOr"
             }`
           }
         >

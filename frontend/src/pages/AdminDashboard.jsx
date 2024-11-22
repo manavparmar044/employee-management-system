@@ -11,7 +11,7 @@ function AdminDashboard() {
     logout()
   }
   return (
-    <div className="flex">
+    <div className="flex text-white">
       <AdminSidebar />
       <div className="flex-1 ml-64">
         <Navbar />

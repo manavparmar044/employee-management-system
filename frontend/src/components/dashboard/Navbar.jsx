@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-indigo-600 text-white px-6 py-4 shadow-md">
+    <nav className="bg-gray-700 text-white px-6 py-4 shadow-md">
       <div className="flex justify-between items-center">
         {/* Welcome Message */}
         <p className="text-sm sm:text-base">

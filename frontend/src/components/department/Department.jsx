@@ -59,7 +59,7 @@ const Department = () => {
       </div>
 
       {/* Search and Add New */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 text-black">
         <input
           type="text"
           placeholder="Search department"
@@ -69,7 +69,7 @@ const Department = () => {
         />
         <button
           onClick={togglePopup}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 ml-4"
+          className="bg-primOr text-white px-4 py-2 rounded hover:bg-secOr ml-4"
         >
           Add New Department
         </button>

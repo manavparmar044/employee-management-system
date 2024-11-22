@@ -8,6 +8,8 @@ import RoleBasedRoutes from "./utils/RoleBasedRoutes";
 import AdminDetails from "./components/dashboard/AdminDetails";
 import Department from "./components/department/Department";
 import AddDepartment from "./components/department/AddDepartment";
+import StaffList from "./components/employee/EmployeeList";
+// import StaffList from "./components/employee/StaffList";
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
           <Route index element = {<AdminDetails />}/>
           <Route path = "/admin-dashboard/department" element = {<Department />}/>
           <Route path = "/admin-dashboard/add-department" element = {<AddDepartment />}/>
+          <Route path = "/admin-dashboard/staff" element = {<StaffList />}/>
           </Route>
         <Route
           path="/employee-dashboard"
