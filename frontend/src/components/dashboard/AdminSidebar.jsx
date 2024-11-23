@@ -1,4 +1,4 @@
-import { Building2, CalendarDays, LayoutDashboard, Settings, Users } from 'lucide-react';
+import { Building2, CalendarDays, FileUser, LayoutDashboard, Settings, Users } from 'lucide-react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -60,6 +60,19 @@ const AdminSidebar = () => {
         >
           <CalendarDays />
           <span>Calendar</span>
+        </NavLink>
+
+        {/* Employee Requests */}
+        <NavLink
+          to="/admin-dashboard/new-requests"
+          className={({ isActive }) =>
+            `flex items-center space-x-4 py-2.5 px-4 rounded-md ${
+              isActive ? "bg-secOr" : "hover:bg-hoverOr"
+            }`
+          }
+        >
+          <FileUser />
+          <span>New Requests</span>
         </NavLink>
 
         {/* Settings */}

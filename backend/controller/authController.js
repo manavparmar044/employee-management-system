@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
+import Employee from "../models/EmployeeModel.js";
 
 export const login = async (req, res) => {
     try {
@@ -41,3 +42,56 @@ export const verify = (req,res) => {
 }
 
 // export default {login,verify};
+
+export const register = async (req,res) => {
+    const {
+        name,
+        email,
+        employee_id,
+        dob,
+        gender,
+        maritalStatus,
+        designation,
+        department,
+        salary,
+        password,
+        role,
+      } = req.body;
+      try {
+        // Check if email or employee ID already exists
+        const existingEmail = await Employee.findOne({ email });
+        const existingID = await Employee.findOne({ employee_id });
+    
+        if (existingEmail) {
+          return res.status(400).json({ success: false, message: "Email already exists." });
+        }
+        if (existingID) {
+          return res.status(400).json({ success: false, message: "Employee ID already exists." });
+        }
+    
+        // Create a new employee
+        const employee = new Employee({
+          name,
+          email,
+          employee_id,
+          dob,
+          gender,
+          maritalStatus,
+          designation,
+          department,
+          salary,
+          password,
+          role,
+        });
+    
+        await employee.save();
+    
+        res.status(201).json({
+          success: true,
+          message: "Employee registered successfully. Await admin approval.",
+        });
+      } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ success: false, message: "Server error. Please try again." });
+      }
+}

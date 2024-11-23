@@ -8,8 +8,10 @@ import RoleBasedRoutes from "./utils/RoleBasedRoutes";
 import AdminDetails from "./components/dashboard/AdminDetails";
 import Department from "./components/department/Department";
 import AddDepartment from "./components/department/AddDepartment";
-import StaffList from "./components/employee/EmployeeList";
-// import StaffList from "./components/employee/StaffList";
+import EmployeeList from "./components/employee/EmployeeList";
+import EmployeeRegister from "./pages/EmployeeRegister";
+import EmployeeRequest from "./components/employee/EmployeeRequest";
+// import EmployeeList from "./components/employee/EmployeeList";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <Routes>
         {/* Public Route */}
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<EmployeeRegister />} />
 
         {/* Private and Role-Based Routes */}
         <Route
@@ -32,7 +35,8 @@ function App() {
           <Route index element = {<AdminDetails />}/>
           <Route path = "/admin-dashboard/department" element = {<Department />}/>
           <Route path = "/admin-dashboard/add-department" element = {<AddDepartment />}/>
-          <Route path = "/admin-dashboard/staff" element = {<StaffList />}/>
+          <Route path = "/admin-dashboard/staff" element = {<EmployeeList />}/>
+          <Route path = "/admin-dashboard/new-requests" element = {<EmployeeRequest />}/>
           </Route>
         <Route
           path="/employee-dashboard"
