@@ -6,8 +6,8 @@ import verifyUser from '../middlewares/authMiddleware.js';
 const authRouter = express.Router();
 
 // POST route for login
+authRouter.get("/verify", verifyUser,verify);
 authRouter.post("/login", login);
 authRouter.post("/register",register);
-authRouter.get("/verify", verifyUser,verify);
 
 export default authRouter;

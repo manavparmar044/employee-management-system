@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRouter from "./routes/auth.js";
+import employeeRouter from "./routes/employee.js";
 import departmentRouter from "./routes/department.js"
 import connectToDB from './database/database.js';
 
@@ -23,6 +24,7 @@ app.use(express.json());  // Middleware to parse JSON request body
 // Use authentication routes
 app.use("/api/auth", authRouter);
 app.use("/api/department", departmentRouter);
+app.use("/api/employees", employeeRouter);
 
 // Start server
 app.listen(process.env.PORT, () => {
