@@ -6,14 +6,8 @@ import Employee from "../models/EmployeeModel.js";
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    try {
-        const employees = await Employee.find(); // Fetch all employees from the database
-        res.json(employees);  // Send employees as JSON response
-    } catch (error) {
-        res.status(500).json({ message: 'Server error', error });
-    }
-});
+router.get('/',verifyUser, getPendingEmployees
+);
 
 router.get("/pending-employees", getPendingEmployees);
 router.post("/employee-decision", verifyUser, handleDecision);
